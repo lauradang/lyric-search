@@ -4,8 +4,12 @@ const API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 
 class Form extends React.Component {
 
-    constructor() {
+    constructor(props) {
         super();
+        this.state = {
+            isLoaded: false,
+            items: []
+        }
         this.onFormSubmit = this.onFormSubmit.bind(this);
       }
 
@@ -15,29 +19,44 @@ class Form extends React.Component {
         const artist = event.target.artistName.value;
         
         const url = API_ROOT + artist + "/" + song;
-        
+
         fetch(url)
-        .then(response => response.json())
-        .then(responseJson => { 
-            console.log(responseJson)
-        })
+        .then((response) => response.json())
+        .then((responseJson) => this.setState({
+            isLoaded: true,
+            items:responseJson.lyric
+        }));
     };
 
       render() {
-        return (
-            <form onSubmit={ this.onFormSubmit }>
-                Song: 
-                <input type="text" id="song" name="songName" />
-                <br/>
-                Artist: 
-                <input type="text" id="artist" name="artistName" />
-                <br/>
-                <button type="submit">
-                    Search
-                </button>
-            </form>
-        );
+        var {isLoaded, items} = this.state;
+
+        if (isLoaded) {
+            return (
+                <div>
+                    { items }
+                </div>
+            )
+        }
+        
+        else {
+            return (
+                <form onSubmit={ this.onFormSubmit }>
+                    <br/>
+                    Song: 
+                    <input type="text" id="song" name="songName" />
+                    <br/>
+                    Artist: 
+                    <input type="text" id="artist" name="artistName" />
+                    <br/>
+                    <button type="submit">
+                        Search
+                    </button>
+                </form>
+            );
+        }
     }
 };
+
 
 export default Form;
