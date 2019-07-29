@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+figure {
+  position: relative;
+  width: 42vw;
+  height: 50vh;
+  margin: 0px auto;
+  text-align: center;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  overflow: auto;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+}

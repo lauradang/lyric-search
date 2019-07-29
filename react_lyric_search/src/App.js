@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
 import Form from './Form';
+import Header from './components/layout/Header';
 
 class App extends React.Component {
 
   render() {
     return (
       <div className="App">
-        <Form onSubmit={ this.onFormSubmit }/>
+        <link rel="shortcut icon" href="images/musicnote.png"/>
+        <Header />
+        <Form />
       </div>
     );
   } 

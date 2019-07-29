@@ -9,8 +9,7 @@ function setup() {
 	//jquery method 
 	$.get(url, function(data)  {
 		search = data;
-		var finalLyric = search.lyric;
-		document.getElementById("demo").innerText = finalLyric;
+		document.getElementById("demo") = search.lyric;
 	});
 }
 
