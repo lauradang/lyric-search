@@ -4,6 +4,8 @@ const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
 
+
+
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class Form extends React.Component {
@@ -38,7 +40,6 @@ class Form extends React.Component {
             artistName:artist
         }));
 
-        //Get Youtube Video
         const YOUTUBE_API_URL = YOUTUBE_API_ROOT + song + artist + "&key=" + YOUTUBE_API_KEY;
 
         fetch(YOUTUBE_API_URL)
