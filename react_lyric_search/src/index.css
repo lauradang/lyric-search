@@ -39,13 +39,18 @@ figcaption {
 .gridContainer {
   display: grid;
   grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto auto;
   /* background-color: #2196F3; */
   justify-content: space-evenly;
+  align-content: space-around;
+  gap: 20px 20px;
+
 }
 
 .search {
-  /* background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8); */
+  border-radius: 25px;
+  background: rgb(0,101,255);
+  background: linear-gradient(0deg, rgba(0,101,255,0.19791666666666663) 0%, rgba(0,177,242,1) 100%, rgba(35,155,199,1) 100%);  
   padding: 20px;
   text-align: center;
   grid-row: 1 / 2;
@@ -53,18 +58,24 @@ figcaption {
 }
 
 .lyrics {
-  background-color: rgba(255, 255, 255, 0.8);
+  background: rgb(34,193,195);
+  font-size:80%;
+  border-radius: 25px;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,131,253,0.19791666666666663) 100%);    
   padding: 20px;
   text-align: center;
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .youtube {
+  border-radius: 25px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,131,253,0.19791666666666663) 100%); 
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   text-align: center;
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
   
 }

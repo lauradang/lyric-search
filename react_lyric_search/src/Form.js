@@ -4,8 +4,8 @@ const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
 
-const YOUTUBE_API_KEY = "AIzaSyD9EPZHLNEQw5rlDLb_5pAoWlwQ21nm8Wg";
-const MUSIX_API_KEY = "1a4f63c6598c1a054efd023cbbb825ff";
+// const YOUTUBE_API_KEY = "AIzaSyD9EPZHLNEQw5rlDLb_5pAoWlwQ21nm8Wg";
+// const MUSIX_API_KEY = "1a4f63c6598c1a054efd023cbbb825ff";
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
@@ -95,11 +95,11 @@ class Form extends React.Component {
         if (isLoaded) {
             return (
                 <form onSubmit={ this.onFormSubmit }>
+                            <br/>
+                            <br/>
                     <div className="gridContainer">
-                        <br/>
-                        <br/>
-
                         <div className="search">
+
                             <input 
                             style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
                             placeholder="   Search a song"
@@ -126,7 +126,7 @@ class Form extends React.Component {
                         </div>
 
                         <div className="lyrics">
-                            <pre style={{ fontFamily:'Geneva', fontSize: '150%', textAlign:'left'}}> 
+                            <pre style={{ fontFamily:'Verdana', fontSize: '150%', textAlign:'left'}}> 
                                 {lyrics.lyric} 
                             </pre>
                         </div>
