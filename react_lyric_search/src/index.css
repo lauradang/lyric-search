@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+/* 
 figure {
   position: relative;
   width: 42vw;
@@ -34,17 +34,15 @@ figcaption {
   bottom: 0;
   height: 10%;
   width: 100%;
-}
+} */
 
 .gridContainer {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto 20px auto auto auto auto auto;
   /* background-color: #2196F3; */
   justify-content: space-evenly;
   align-content: space-around;
-  gap: 20px 20px;
-
+  gap: 10px 10px;
 }
 
 .search {
@@ -59,13 +57,12 @@ figcaption {
 
 .lyrics {
   background: rgb(34,193,195);
-  font-size:80%;
   border-radius: 25px;
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,131,253,0.19791666666666663) 100%);    
-  padding: 20px;
+  padding: 50px;
   text-align: center;
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 3 / 7;
 }
 
 .youtube {
@@ -73,9 +70,19 @@ figcaption {
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,131,253,0.19791666666666663) 100%); 
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
+  padding: 50px;
   text-align: center;
   grid-column: 2 / 3;
   grid-row: 3 / 4;
-  
+}
+
+.topsongs {
+  border-radius: 25px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,131,253,0.19791666666666663) 100%); 
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  text-align: center;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5; 
 }

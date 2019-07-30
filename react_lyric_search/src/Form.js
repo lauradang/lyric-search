@@ -4,7 +4,6 @@ const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
 
-
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class Form extends React.Component {
@@ -93,8 +92,9 @@ class Form extends React.Component {
         if (isLoaded) {
             return (
                 <form onSubmit={ this.onFormSubmit }>
-                            <br/>
-                            <br/>
+                    <br/>
+                    <br/>
+
                     <div className="gridContainer">
                         <div className="search">
 
@@ -130,35 +130,33 @@ class Form extends React.Component {
                         </div>
 
                         <div className="youtube">
-                            <br/>
                             <div>
                                 <figure>
                                     <iframe align="left" width="560" height="315" src={video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    <figcaption></figcaption>
                                 </figure>
                             </div>
-                                <ul>
-                                    <br/>
-                                    <h1 style={{textAlign:'left'}}>Top 10 Tracks from {toTitleCase(artistName)}</h1>
-                                    {topSongs.map(function(topSongs, index){
-                                        return (
-                                            <div style={{textAlign:'left', fontSize:"25px"}}>
-                                                <a  
-                                                key={ index } 
-                                                href={topSongs['track']['track_share_url']}>
-                                                {index+1}. {topSongs['track']['track_name']}
-                                                </a>
-                                                <br/>
-                                                <br/>
-                                            </div>
-                                        )
-                                    })}
-                                </ul>                  
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
                         </div>
+
+                        <div className="topsongs">
+                            <ul>
+                                <h1 style={{textAlign:'center'}}>Top 10 Tracks from {toTitleCase(artistName)}</h1>
+                                {topSongs.map(function(topSongs, index){
+                                    return (
+                                        <div style={{textAlign:'left', fontSize:"25px"}}>
+                                            <a  
+                                            key={ index } 
+                                            href={topSongs['track']['track_share_url']}>
+                                            </a>
+                                            <strong>{index+1}. </strong> 
+                                            {topSongs['track']['track_name']}
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                    )
+                                })}
+                            </ul>    
+                        </div>      
+
                     </div>
                 </form>
             )
@@ -170,34 +168,37 @@ class Form extends React.Component {
                     <br/>
                     <br/>
 
-                    <input 
-                    style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
-                    placeholder="   Search a song"
-                    type="text" 
-                    id="song" 
-                    name="songName" />
+                    <div className="gridContainer">
+                        <div className="search">
+                            <input 
+                            style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
+                            placeholder="   Search a song"
+                            type="text" 
+                            id="song" 
+                            name="songName" />
 
-                    <br/>
-                    <br/>
+                            <br/>
+                            <br/>
 
-                    <input 
-                    style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
-                    placeholder="   Search an artist"
-                    type="text" 
-                    id="artist" 
-                    name="artistName" />
+                            <input 
+                            style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
+                            placeholder="   Search an artist"
+                            type="text" 
+                            id="artist" 
+                            name="artistName" />
 
-                    <br/>
-                    <br/>
+                            <br/>
+                            <br/>
 
-                    <button type="submit" style={{ fontWeight: '900', color: '#fff', fontSize:'100%', padding:'10px', borderRadius: '280px', fontFamily:"Verdana", backgroundColor: '#333'}}>
-                        Search
-                    </button>
+                            <button type="submit" style={{ fontWeight: '900', color: '#fff', fontSize:'100%', padding:'10px', borderRadius: '280px', fontFamily:"Verdana", backgroundColor: '#333'}}>
+                                Search
+                            </button>
+                        </div>
+                    </div>
                 </form>
             );
         }
     }
 };
-
 
 export default Form;
