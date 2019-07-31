@@ -10,9 +10,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <link rel="shortcut icon" href="images/musicnote.png"/>
-        <div>
-          { process.env.REACT_APP_YOUTUBE_API_KEY }
-        </div>
         <Header />
         <Form />
       </div>

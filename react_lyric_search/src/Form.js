@@ -4,6 +4,7 @@ import TopSongs from './TopSongs';
 const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
+
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class Form extends React.Component {
@@ -43,7 +44,7 @@ class Form extends React.Component {
 
 
         // Get Youtube Video
-        const YOUTUBE_API_URL = YOUTUBE_API_ROOT + song + artist + "&key=" + YOUTUBE_API_KEY;
+        const YOUTUBE_API_URL = YOUTUBE_API_ROOT + song + artist + "&key=" + process.env.REACT_APP_YOUTUBE_API_KEY;
 
         fetch(YOUTUBE_API_URL)
         .then((response) => response.json())
@@ -55,7 +56,7 @@ class Form extends React.Component {
         .catch(error => this.setState({ errorOccurred: true }));
 
         // Get top 10 songs from artist
-        const MUSIX_API_URL = MUSIX_API_ROOT + "track.search?q_artist=" + artist + "&page_size=10&page=1&s_track_rating=desc&apikey=" + MUSIX_API_KEY;
+        const MUSIX_API_URL = MUSIX_API_ROOT + "track.search?q_artist=" + artist + "&page_size=10&page=1&s_track_rating=desc&apikey=" + process.env.REACT_APP_MUSIX_API_KEY;
     
         fetch(proxyurl + MUSIX_API_URL)
         .then((response) => response.json())
@@ -65,6 +66,9 @@ class Form extends React.Component {
             artistName:artist
         }))
         .catch(error => this.setState({ error, errorOccurred: true }))
+        
+        // Get related artists
+        // const MUSIX_API_URL_RELATED = MUSIX_API_ROOT + "artist.related.get?artist_id=" + artistID + "&page_size=2&page=1&apikey=" + MUSIX_API_KEY;
         
         // // Get artistid
         // const MUSIX_API_URL_ARTISTID = MUSIX_API_ROOT + "artist.search?q_artist=" + artist + "&page_size=5&apikey=" + MUSIX_API_KEY;
@@ -86,8 +90,6 @@ class Form extends React.Component {
       render() {
         var {isLoaded, lyrics, video, topSongs, artistName, artistID, relatedArtists, errorOccurred} = this.state;
         console.log(this.state)
-        // Get related artists
-        const MUSIX_API_URL_RELATED = MUSIX_API_ROOT + "artist.related.get?artist_id=" + artistID + "&page_size=2&page=1&apikey=" + MUSIX_API_KEY;
 
         function toTitleCase(str) {
             return str.replace(/\w\S*/g, function(txt){
