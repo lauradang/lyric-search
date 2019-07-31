@@ -12,12 +12,12 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class Form extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isLoaded: false,
             lyrics: [],
-            isLyrics: true,
+            errorOccurred: false,
             video: [],
             topSongs: [],
             artistName: '',
@@ -26,7 +26,7 @@ class Form extends React.Component {
         }
         this.onFormSubmit = this.onFormSubmit.bind(this);
       }
-
+    
     onFormSubmit(event) {
         event.preventDefault();
 
@@ -41,9 +41,9 @@ class Form extends React.Component {
             isLoaded: true,
             lyrics:responseJson,
             artistName:artist,
-            isLyrics: true
+            errorOccurred: false
         }))
-        .catch(error => this.setState({ isLyrics: false }));
+        .catch(error => this.setState({ errorOccurred: true }));
 
 
         // Get Youtube Video
@@ -55,7 +55,8 @@ class Form extends React.Component {
             isLoaded: true,
             video: "https://www.youtube.com/embed/" + responseJson['items'][0]['id']['videoId'],
             artistName:artist
-        }));
+        }))
+        .catch(error => this.setState({ errorOccurred: true }));
 
         // Get top 10 songs from artist
         const MUSIX_API_URL = MUSIX_API_ROOT + "track.search?q_artist=" + artist + "&page_size=10&page=1&s_track_rating=desc&apikey=" + MUSIX_API_KEY;
@@ -67,7 +68,7 @@ class Form extends React.Component {
             topSongs: responseJson['message']['body']['track_list'],
             artistName:artist
         }))
-        .catch(error => this.setState({ error, isLyrics: false }))
+        .catch(error => this.setState({ error, errorOccurred: true }))
         
         // // Get artistid
         // const MUSIX_API_URL_ARTISTID = MUSIX_API_ROOT + "artist.search?q_artist=" + artist + "&page_size=5&apikey=" + MUSIX_API_KEY;
@@ -87,7 +88,7 @@ class Form extends React.Component {
     };
     
       render() {
-        var {isLoaded, lyrics, video, topSongs, artistName, artistID, relatedArtists, isLyrics, isVideo} = this.state;
+        var {isLoaded, lyrics, video, topSongs, artistName, artistID, relatedArtists, errorOccurred} = this.state;
         console.log(this.state)
         // Get related artists
         const MUSIX_API_URL_RELATED = MUSIX_API_ROOT + "artist.related.get?artist_id=" + artistID + "&page_size=2&page=1&apikey=" + MUSIX_API_KEY;
@@ -98,7 +99,7 @@ class Form extends React.Component {
             });
         }
         
-        if (isLoaded && !isLyrics) {
+        if (errorOccurred || lyrics.lyric == "") {
             return (
                 <form onSubmit={ this.onFormSubmit }>
                     <br/>
