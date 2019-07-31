@@ -1,10 +1,12 @@
 import React from 'react';
+import TopSongs from './TopSongs';
 
 const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
 
-
+const YOUTUBE_API_KEY = "AIzaSyD9EPZHLNEQw5rlDLb_5pAoWlwQ21nm8Wg";
+const MUSIX_API_KEY = "1a4f63c6598c1a054efd023cbbb825ff";
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
@@ -15,6 +17,7 @@ class Form extends React.Component {
         this.state = {
             isLoaded: false,
             lyrics: [],
+            isLyrics: true,
             video: [],
             topSongs: [],
             artistName: '',
@@ -26,7 +29,7 @@ class Form extends React.Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        
+
         // Get lyrics
         const song = event.target.songName.value;
         const artist = event.target.artistName.value;
@@ -37,9 +40,13 @@ class Form extends React.Component {
         .then((responseJson) => this.setState({
             isLoaded: true,
             lyrics:responseJson,
-            artistName:artist
-        }));
+            artistName:artist,
+            isLyrics: true
+        }))
+        .catch(error => this.setState({ isLyrics: false }));
 
+
+        // Get Youtube Video
         const YOUTUBE_API_URL = YOUTUBE_API_ROOT + song + artist + "&key=" + YOUTUBE_API_KEY;
 
         fetch(YOUTUBE_API_URL)
@@ -59,7 +66,8 @@ class Form extends React.Component {
             isLoaded: true,
             topSongs: responseJson['message']['body']['track_list'],
             artistName:artist
-        }));
+        }))
+        .catch(error => this.setState({ error, isLyrics: false }))
         
         // // Get artistid
         // const MUSIX_API_URL_ARTISTID = MUSIX_API_ROOT + "artist.search?q_artist=" + artist + "&page_size=5&apikey=" + MUSIX_API_KEY;
@@ -79,8 +87,8 @@ class Form extends React.Component {
     };
     
       render() {
-        var {isLoaded, lyrics, video, topSongs, artistName, artistID, relatedArtists} = this.state;
-
+        var {isLoaded, lyrics, video, topSongs, artistName, artistID, relatedArtists, isLyrics, isVideo} = this.state;
+        console.log(this.state)
         // Get related artists
         const MUSIX_API_URL_RELATED = MUSIX_API_ROOT + "artist.related.get?artist_id=" + artistID + "&page_size=2&page=1&apikey=" + MUSIX_API_KEY;
 
@@ -90,6 +98,50 @@ class Form extends React.Component {
             });
         }
         
+        if (isLoaded && !isLyrics) {
+            return (
+                <form onSubmit={ this.onFormSubmit }>
+                    <br/>
+                    <br/>
+
+                    <div className="gridContainer">
+                        <div className="search">
+                            <input 
+                            style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
+                            placeholder="   Search a song"
+                            type="text" 
+                            id="song" 
+                            name="songName" />
+
+                            <br/>
+                            <br/>
+
+                            <input 
+                            style={{width: '50%', height: '30px', fontSize: '110%', padding:'8px', borderRadius: '25px'}}
+                            placeholder="   Search an artist"
+                            type="text" 
+                            id="artist" 
+                            name="artistName" />
+
+                            <br/>
+                            <br/>
+
+                            <button type="submit" style={{ fontWeight: '900', color: '#fff', fontSize:'100%', padding:'10px', borderRadius: '280px', fontFamily:"Verdana", backgroundColor: '#333'}}>
+                                Search
+                            </button>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div className="error">
+                            Couldn't find a match. Try a different spelling or a different song.
+                            <br/>
+                        </div>
+                    </div>
+                </form>
+            );
+        }
+
         if (isLoaded) {
             return (
                 <form onSubmit={ this.onFormSubmit }>
@@ -156,8 +208,12 @@ class Form extends React.Component {
                                     )
                                 })}
                             </ul>    
-                        </div>      
+                        </div> 
 
+                        <div>
+                            <TopSongs />
+                        </div>     
+                        
                     </div>
                 </form>
             )
