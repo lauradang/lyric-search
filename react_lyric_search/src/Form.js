@@ -4,10 +4,6 @@ import TopSongs from './TopSongs';
 const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
 const MUSIX_API_ROOT = "https://api.musixmatch.com/ws/1.1/"
-
-const YOUTUBE_API_KEY = "AIzaSyD9EPZHLNEQw5rlDLb_5pAoWlwQ21nm8Wg";
-const MUSIX_API_KEY = "1a4f63c6598c1a054efd023cbbb825ff";
-
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 class Form extends React.Component {
