@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react_lyric_search/static/css/main.117f1f29.chunk.css",
+    "main.js": "/react_lyric_search/static/js/main.b997f0c5.chunk.js",
+    "main.js.map": "/react_lyric_search/static/js/main.b997f0c5.chunk.js.map",
+    "runtime~main.js": "/react_lyric_search/static/js/runtime~main.44a484b9.js",
+    "runtime~main.js.map": "/react_lyric_search/static/js/runtime~main.44a484b9.js.map",
+    "static/js/2.1bfa6c19.chunk.js": "/react_lyric_search/static/js/2.1bfa6c19.chunk.js",
+    "static/js/2.1bfa6c19.chunk.js.map": "/react_lyric_search/static/js/2.1bfa6c19.chunk.js.map",
+    "index.html": "/react_lyric_search/index.html",
+    "precache-manifest.0a6e5c21db3173d4231c1bc1ad3ad1fb.js": "/react_lyric_search/precache-manifest.0a6e5c21db3173d4231c1bc1ad3ad1fb.js",
+    "service-worker.js": "/react_lyric_search/service-worker.js",
+    "static/css/main.117f1f29.chunk.css.map": "/react_lyric_search/static/css/main.117f1f29.chunk.css.map"
+  }
+}
