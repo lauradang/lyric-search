@@ -2,6 +2,7 @@
   "name": "react_lyric_search",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://lyricsearch.github.io/react_lyric_search",
   "dependencies": {
     "env-cmd": "^9.0.3",
     "react": "^16.8.6",
@@ -12,6 +13,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.0"
   }
 }
