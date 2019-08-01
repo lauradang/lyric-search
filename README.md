@@ -17,4 +17,4 @@ Firebase (URL in the description)
 
 ## Author
 
-* **Laura Dang**
+Laura Dang
