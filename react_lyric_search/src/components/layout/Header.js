@@ -3,7 +3,8 @@ import React from 'react';
 function Header() {
     return (
         <header style={headerStyle}>
-            <h1>LyricSearch</h1>
+            <h1 className="inline">LyricSearch</h1>
+            <img className="center scaled inline" src={require('./bmo.gif')} alt="loading..." />
         </header>
     )
 }

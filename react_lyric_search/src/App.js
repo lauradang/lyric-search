@@ -9,7 +9,6 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <link rel="shortcut icon" href="images/musicnote.png"/>
         <Header />
         <Form />
       </div>

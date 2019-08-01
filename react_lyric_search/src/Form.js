@@ -1,5 +1,4 @@
 import React from 'react';
-import TopSongs from './TopSongs';
 
 const HEROKU_API_ROOT = "https://lyric-api.herokuapp.com/api/find/";
 const YOUTUBE_API_ROOT = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=";
@@ -136,6 +135,7 @@ class Form extends React.Component {
                             Couldn't find a match. Try a different spelling or a different song.
                             <br/>
                         </div>
+                        <img className="center scaled2" src={require('./jake.gif')} alt="loading..." />
                     </div>
                 </form>
             );
@@ -176,7 +176,7 @@ class Form extends React.Component {
                         </div>
 
                         <div className="lyrics">
-                            <pre style={{ fontFamily:'Verdana', fontSize: '150%', textAlign:'left'}}> 
+                            <pre style={{ fontFamily:'Verdana', fontSize: '100%', textAlign:'left'}}> 
                                 {lyrics.lyric} 
                             </pre>
                         </div>
@@ -184,17 +184,17 @@ class Form extends React.Component {
                         <div className="youtube">
                             <div>
                                 <figure>
-                                    <iframe align="left" width="560" height="315" src={video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe align="center" width="400" height="315" src={video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </figure>
                             </div>
                         </div>
 
                         <div className="topsongs">
                             <ul>
-                                <h1 style={{textAlign:'center'}}>Top 10 Tracks from {toTitleCase(artistName)}</h1>
+                                <h2 style={{textAlign:'center'}}>Top 10 Tracks from {toTitleCase(artistName)}</h2>
                                 {topSongs.map(function(topSongs, index){
                                     return (
-                                        <div style={{textAlign:'left', fontSize:"25px"}}>
+                                        <div style={{textAlign:'left', fontSize:"18px"}}>
                                             <a  
                                             key={ index } 
                                             href={topSongs['track']['track_share_url']}>
@@ -208,11 +208,6 @@ class Form extends React.Component {
                                 })}
                             </ul>    
                         </div> 
-
-                        <div>
-                            <TopSongs />
-                        </div>     
-                        
                     </div>
                 </form>
             )

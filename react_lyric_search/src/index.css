@@ -11,30 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/* 
-figure {
-  position: relative;
-  width: 42vw;
-  height: 50vh;
-  margin: 0px auto;
-  text-align: center;
-}
 
-iframe {
-  position: absolute;
-  top: 0;
-  overflow: auto;
+.center {
   display: block;
-  height: 100%;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-figcaption {
-  position: absolute;
-  bottom: 0;
-  height: 10%;
-  width: 100%;
-} */
+.inline {
+  display: inline-block;
+}
+
+.scaled {
+  position:relative;
+  width:80px;
+  height:auto;
+  margin-bottom:-20px;
+}
+
+.scaled2 {
+  position:relative;
+  width:190%;
+  height:auto;
+  margin-bottom:-20px;
+}
 
 .gridContainer {
   display: grid;
