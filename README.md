@@ -8,11 +8,8 @@ A web application where users can search up song lyrics and watch the matching Y
 * [Heroku API](https://lyric-api.herokuapp.com/api) - To find the lyrics
 * [Musixmatch API](https://developer.musixmatch.com/) - To find the top 10 tracks of artist
 * [Youtube Data API](https://developers.google.com/youtube/v3/) - To display the corresponding Youtube video
+* [Firebase](https://firebase.google.com/) - For deploying the website, which can be found [here](https://searchlyricengine.firebaseapp.com/)
 * CSS - Styling
-
-## Deployment
-
-Firebase (URL in the description)
 
 ## Author
 
